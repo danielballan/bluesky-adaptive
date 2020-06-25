@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post11+g524894f documentation</title>
+  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post12+gc82d064 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.post11+g524894f
+                0.post12+gc82d064
               </div>
             
           
@@ -198,7 +198,7 @@ and stopping acquisition</p></li>
 <li><p>in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> plans, but without generating <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></li>
 <li><p>providing feedback on a per-<a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a> basis</p></li>
 <li><p>providing feedback on a per-run / <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.start" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a> basis</p></li>
-<li><p>passive feed back</p></li>
+<li><p>asynchronous and decoupled feedback</p></li>
 <li><p>providing feedback across many runs</p></li>
 </ol>
 <p>Each of these level of fidelity and interaction has a use and which
@@ -269,27 +269,41 @@ only expect a recommendation once per-run.</p>
 <p>An example of this could be a 2D map where at each point we take a
 XANES scan and then focus on points of interest with in the map.</p>
 </div>
-<div class="section" id="passive-feedback">
-<h4>Passive feedback<a class="headerlink" href="#passive-feedback" title="Permalink to this headline">¶</a></h4>
-<p>In some cases we may not want to have a tightly coupled loop between
-data collection and the computation.  A version of passive feedback is
-already in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> as <a class="reference external" href="https://blueskyproject.io/bluesky/state-machine.html#automated-suspension">Suspenders</a>.</p>
-<p>For a data-driven example, consider if we have a data quality check to
-abort collection if something goes catastrophically wrong or cut of
-collection early if we have enough statistics.  We do not want to slow
-down data collection to wait for the computation to finish before
-continuing with the rest of the plan (the worst case scenario is the
-status quo if the feed back did not exist).  In this case we would
-subscribe the agent to the document stream and use some other
-side-band to communicate happy/sad to the RunEngine.</p>
-<p>Another case where this passive feedback could be use is in tuning the
-step size of a temperature ramp.  If the plan looks at some shared
-state (ex, a PV) for the next step size we could have an external
-agent that is watching the document stream write the recommended step
-size to state.  This way if the computation falls behind and needs to
-drop data points to catch up or falls over entirely the failure mode
-is a fixed step size ramp (which is the status quo).</p>
-<p>These passive feedback systems are out of scope for this package.</p>
+<div class="section" id="asynchronous-and-decoupled-feedback">
+<h4>Asynchronous and decoupled feedback<a class="headerlink" href="#asynchronous-and-decoupled-feedback" title="Permalink to this headline">¶</a></h4>
+<p>In some cases we do want or need a tightly coupled synchronous
+coordination between data collection and the computation.  In both the
+per-event and per-run levels, the plan is expecting a 1:1 response
+from the recommendation engine for each piece of data collected.  In
+general, the plan has to wait for the response from algorithm before
+continuing and the communication channel between the plan.  Further, the
+communication between the algorithm and the plan necessarily very rich so
+the plan and the brains need to be fairly well coordinated.</p>
+<p>If instead we wanted to have an agent watching the data and assessing
+the quality.  If we detect we have collected enough data on the sample
+and further exposure would waste beamtime and put excess dose on the
+sample we want to complete the plan early.  Conversely, if we detect
+that the data is junk (like the sample is no longer in the beam) we
+want to abort the plan.  While this watch dog process can save us
+time, we do not want to slow down data collection to wait for
+permission to continue at every point.  In this case we only need to
+convey 3 possible states to the RunEngine and plan <code class="docutils literal notranslate"><span class="pre">{'keep</span> <span class="pre">going',</span>
+<span class="pre">'you</span> <span class="pre">have</span> <span class="pre">enough</span> <span class="pre">data',</span> <span class="pre">'this</span> <span class="pre">data</span> <span class="pre">is</span> <span class="pre">garbage</span> <span class="pre">please</span> <span class="pre">stop'}</span></code>.  In an
+analogy to <a class="reference external" href="https://blueskyproject.io/bluesky/state-machine.html#automated-suspension">Suspenders</a>,
+this can be done at the RunEnigne level (as has been done at APS) so
+the plan does not need to even be aware of the watch dog to benefit
+from it.</p>
+<p>A slightly more coupled example of asynchronous feedback is a 1D scan
+that looks at a PV (or other shared state) for what its step size is.
+If the step size is set by a user to a fixed value an the plan run it behaves
+as a normal <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a> with a fixed step size.  However,
+there could be an agent (or a human!) watching the data and adjusting
+the step size based on the how “interesting” the data currently looks.</p>
+<p>In both of these cases the feedback is adding value without imposing
+a cost to the plans and the failure mode of the computation failing is
+the current status quo.</p>
+<p>There are many ways that asynchronous feedback can be configured and
+implemented and is out of scope for this package.</p>
 </div>
 <div class="section" id="per-many-runs">
 <h4>Per-many-runs<a class="headerlink" href="#per-many-runs" title="Permalink to this headline">¶</a></h4>
