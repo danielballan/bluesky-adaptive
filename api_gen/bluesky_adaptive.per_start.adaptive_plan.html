@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>bluesky_adaptive.per_start.adaptive_plan &mdash; bluesky-adaptive 0.post17+ge65006f documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="bluesky_adaptive.per_start.recommender_factory" href="bluesky_adaptive.per_start.recommender_factory.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> bluesky-adaptive
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.post17+ge65006f
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bluesky_adaptive.per_event.recommender_factory.html">bluesky_adaptive.per_event.recommender_factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bluesky_adaptive.per_event.adaptive_plan.html">bluesky_adaptive.per_event.adaptive_plan</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bluesky_adaptive.per_start.recommender_factory.html">bluesky_adaptive.per_start.recommender_factory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">bluesky_adaptive.per_start.adaptive_plan</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bluesky-adaptive</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>bluesky_adaptive.per_start.adaptive_plan</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api_gen/bluesky_adaptive.per_start.adaptive_plan.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bluesky-adaptive-per-start-adaptive-plan">
+<h1>bluesky_adaptive.per_start.adaptive_plan<a class="headerlink" href="#bluesky-adaptive-per-start-adaptive-plan" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="bluesky_adaptive.per_start.adaptive_plan">
+<code class="sig-prename descclassname">bluesky_adaptive.per_start.</code><code class="sig-name descname">adaptive_plan</code><span class="sig-paren">(</span><em class="sig-param">dets</em>, <em class="sig-param">first_point</em>, <em class="sig-param">*</em>, <em class="sig-param">to_brains</em>, <em class="sig-param">from_brains</em>, <em class="sig-param">md=None</em>, <em class="sig-param">take_reading=&lt;function count at 0x7f02edb142f0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bluesky_adaptive/per_start.html#adaptive_plan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bluesky_adaptive.per_start.adaptive_plan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an adaptive scan using an inter-run recommendation engine.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>dets</strong><span class="classifier">List[OphydObj]</span></dt><dd><p>The detector to read at each point.  The dependent keys that the
+recommendation engine is looking for must be provided by these
+devices.</p>
+</dd>
+<dt><strong>first_point</strong><span class="classifier">Dict[Settable, Any]</span></dt><dd><p>The first point of the scan.  The motors that will be scanned
+are extracted from the keys.  The independent keys that the
+recommendation engine is looking for / returning must be provided
+by these devices.</p>
+</dd>
+<dt><strong>to_brains</strong><span class="classifier">Callable[str, dict]</span></dt><dd><p>This is the callback that will be registered to the RunEngine.</p>
+<p>The expected contract is for each event it will place either a
+dict mapping independent variable to recommended value or None.</p>
+<p>This plan will either move to the new position and take data
+if the value is a dict or end the run if <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+<dt><strong>from_brains</strong><span class="classifier">Queue</span></dt><dd><p>The consumer side of the Queue that the recommendation engine is
+putting the recommendations onto.</p>
+</dd>
+<dt><strong>md</strong><span class="classifier">dict[str, Any], optional</span></dt><dd><p>Any extra meta-data to put in the Start document</p>
+</dd>
+<dt><strong>take_reading</strong><span class="classifier">plan, optional</span></dt><dd><p>function to do the actual acquisition</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">take_reading</span><span class="p">(</span><span class="n">dets</span><span class="p">,</span> <span class="n">md</span><span class="o">=</span><span class="p">{}):</span>
+     <span class="k">yield from</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Callable[List[OphydObj], Optional[Dict[str, Any]]] -&gt; Generator[Msg], optional</p>
+<p>This plan must generate exactly 1 Run</p>
+<p>Defaults to <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.count.html#bluesky.plans.count" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky.plans.count</span></code></a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="bluesky_adaptive.per_start.recommender_factory.html" class="btn btn-neutral float-left" title="bluesky_adaptive.per_start.recommender_factory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NSLS-II
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

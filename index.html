@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post13+gc1e6411 documentation</title>
+  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post17+ge65006f documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.post13+gc1e6411
+                0.post17+ge65006f
               </div>
             
           
@@ -94,6 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_gen/bluesky_adaptive.per_event.recommender_factory.html">bluesky_adaptive.per_event.recommender_factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_gen/bluesky_adaptive.per_event.adaptive_plan.html">bluesky_adaptive.per_event.adaptive_plan</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_gen/bluesky_adaptive.per_start.recommender_factory.html">bluesky_adaptive.per_start.recommender_factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_gen/bluesky_adaptive.per_start.adaptive_plan.html">bluesky_adaptive.per_start.adaptive_plan</a></li>
 </ul>
 
             
@@ -260,6 +268,20 @@ have 1 run who’s path through phase space was driven by the data.</p>
 of a peak or a 2D scan across gradient sample that samples more finely
 at phase boundaries.  In these cases there is a 1:1 mapping between an
 event collected and a recommendation for the next point to collect.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api_gen/bluesky_adaptive.per_event.recommender_factory.html#bluesky_adaptive.per_event.recommender_factory" title="bluesky_adaptive.per_event.recommender_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky_adaptive.per_event.recommender_factory</span></code></a></p></td>
+<td><p>Generate the callback and queue for gpCAM integration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api_gen/bluesky_adaptive.per_event.adaptive_plan.html#bluesky_adaptive.per_event.adaptive_plan" title="bluesky_adaptive.per_event.adaptive_plan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky_adaptive.per_event.adaptive_plan</span></code></a></p></td>
+<td><p>Execute an adaptive scan using an per event-run recommendation engine.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="per-run">
 <h4>Per-Run<a class="headerlink" href="#per-run" title="Permalink to this headline">¶</a></h4>
@@ -268,6 +290,20 @@ maps more closely to a Run, we do the same as the <a class="reference internal" 
 only expect a recommendation once per-run.</p>
 <p>An example of this could be a 2D map where at each point we take a
 XANES scan and then focus on points of interest with in the map.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api_gen/bluesky_adaptive.per_start.recommender_factory.html#bluesky_adaptive.per_start.recommender_factory" title="bluesky_adaptive.per_start.recommender_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky_adaptive.per_start.recommender_factory</span></code></a></p></td>
+<td><p>Generate the callback and queue for an Adaptive API backed reccomender.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api_gen/bluesky_adaptive.per_start.adaptive_plan.html#bluesky_adaptive.per_start.adaptive_plan" title="bluesky_adaptive.per_start.adaptive_plan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky_adaptive.per_start.adaptive_plan</span></code></a></p></td>
+<td><p>Execute an adaptive scan using an inter-run recommendation engine.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="asynchronous-and-decoupled-feedback">
 <h4>Asynchronous and decoupled feedback<a class="headerlink" href="#asynchronous-and-decoupled-feedback" title="Permalink to this headline">¶</a></h4>

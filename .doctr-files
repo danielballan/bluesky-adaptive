@@ -1,3 +1,10 @@
+./_modules/bluesky_adaptive/per_event.html
+./_modules/bluesky_adaptive/per_start.html
+./_modules/index.html
+./_sources/api_gen/bluesky_adaptive.per_event.adaptive_plan.rst.txt
+./_sources/api_gen/bluesky_adaptive.per_event.recommender_factory.rst.txt
+./_sources/api_gen/bluesky_adaptive.per_start.adaptive_plan.rst.txt
+./_sources/api_gen/bluesky_adaptive.per_start.recommender_factory.rst.txt
 ./_sources/examples.rst.txt
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
@@ -92,6 +99,10 @@
 ./_static/searchtools.js
 ./_static/underscore-1.3.1.js
 ./_static/underscore.js
+./api_gen/bluesky_adaptive.per_event.adaptive_plan.html
+./api_gen/bluesky_adaptive.per_event.recommender_factory.html
+./api_gen/bluesky_adaptive.per_start.adaptive_plan.html
+./api_gen/bluesky_adaptive.per_start.recommender_factory.html
 ./examples.html
 ./genindex.html
 ./index.html
