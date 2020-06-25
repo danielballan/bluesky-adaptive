@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post8+ge8e710c documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> bluesky-adaptive
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.post8+ge8e710c
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">bluesky-adaptive</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>bluesky-adaptive Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bluesky-adaptive-documentation">
+<h1>bluesky-adaptive Documentation<a class="headerlink" href="#bluesky-adaptive-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is currently under rapid development, the API may change at
+any time.</p>
+</div>
+<div class="section" id="adaptive-ness-in-plans">
+<h2>Adaptive-ness in plans<a class="headerlink" href="#adaptive-ness-in-plans" title="Permalink to this headline">¶</a></h2>
+<p>Fixed plans (ex <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.count.html#bluesky.plans.count" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a> or <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a>) are
+sufficient for many science use-cases, but in some cases having the
+plan respond (adapt) to the data as it is being taken can provide
+significant improvements to the quality of the data collected while
+simultaneously reducing the collection time.  The feedback between the data
+and the plan can be at many levels of fidelity:</p>
+<ul class="simple">
+<li><p>detecting if the data looks “bad” (the sample fell out of the beam)
+and stopping acquisition</p></li>
+<li><p>detecting when the data is at a sufficient signal to noise</p></li>
+<li><p>beamline alignment / tuning / sample centering</p></li>
+<li><p>auto-exposure</p></li>
+<li><p>selecting points in phase space to measure next</p></li>
+<li><p>selecting what sample to measure next</p></li>
+</ul>
+<p>Adaptive-ness can be inserted into the data collection process at several levels</p>
+<ol class="arabic simple">
+<li><p>below <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> and in (or below) the control system</p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> plans, but without generating <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></li>
+<li><p>providing feedback on a per-<a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a> basis</p></li>
+<li><p>providing feedback on a per-run / <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.start" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a> basis</p></li>
+<li><p>passive feed back</p></li>
+<li><p>providing feedback across many runs</p></li>
+</ol>
+<p>Each of these level of fidelity and interaction has a use and which
+ones to pick will depend on the requirements and constraints on a
+per-facility, per-beamline, and per-experiment basis.  A given
+experiment may even make use of adaptivness from multiple levels!</p>
+<p>There is abundant prior art in this space, being able to feedback
+measurements to acquisition is not a novel idea.  This package
+provides a set of reference tools for implementing levels 3 and 4 of
+these feedback loops in the context of the <a class="reference external" href="https://blueskyproject.io/">bluesky project</a> for any fidelity or application.</p>
+<div class="section" id="integration-layer">
+<h3>Integration layer<a class="headerlink" href="#integration-layer" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="in-or-below-the-controls-system">
+<h4>In or below the controls system<a class="headerlink" href="#in-or-below-the-controls-system" title="Permalink to this headline">¶</a></h4>
+<p>If you need to make decisions on very short time scales (and have a
+computation than can fit in the time budget) doing “adaptive” in or
+below the control system maybe a good choice.  One example of this is
+in the scaler devices that are used as the backend electronics for
+integrating point detector on many beamlines.  Typically they are
+configured to take a fixed length exposure, however they can be
+configured to gate on any of the channels.  Thus by gating on the I0
+(incoming photon flux) channel your other wise fixed plan would
+“adapt” the exposure time to account for upstream fluctuations in
+photon intensity.</p>
+<p>You could also imagine a scenario with an imaging detector where we
+have an efficient way of telling if the image contains “good” data or
+not.  If we put the logic in the image acquisition pipe line we loud
+ask to take “N <em>good</em> images” and the plan would adapt by taking as
+many frames as required until the requested number of good frames were
+captured.</p>
+<p>Configuring adaptiveness at this level can provide huge benefits, it
+transparently works for any plan we run, but can be very time
+consuming to develop and may be hardware-specific.  In general this
+level of adaptiveness is out-of-scope for this package.</p>
+</div>
+<div class="section" id="in-plans-but-below-events">
+<h4>In plans, but below Events<a class="headerlink" href="#in-plans-but-below-events" title="Permalink to this headline">¶</a></h4>
+<p>At the most granular level <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> gives the plan author access to
+the data extracted from the control system before it is processed
+through the <a class="reference external" href="https://blueskyproject.io/event_model">event_model</a>
+documents.  This is the level that we use in the
+<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.adaptive_scan.html#bluesky.plans.adaptive_scan" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adaptive_scan</span></code></a> which is bundled with <code class="docutils literal notranslate"><span class="pre">bluesky</span></code>.
+This level has also been used at LCLS who implement the frame dropping
+logic described above at the plan level (via
+<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plan_stubs.drop.html#bluesky.plan_stubs.drop" title="(in bluesky v1.6.2.post11+gb147ced)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop</span></code></a>).</p>
+<p>This level gives the author a tremendous amount of flexibility and can
+be used to prevent “bad” data from entering the document stream, but quickly
+becomes very plan-specific and difficult to generalize and re-use.  This level
+is documented else where and out of scope for this project.</p>
+</div>
+<div class="section" id="per-event">
+<span id="id1"></span><h4>Per-Event<a class="headerlink" href="#per-event" title="Permalink to this headline">¶</a></h4>
+<p>In cases where the computation we need to do to recommend the next step
+is fast compared to the time it takes to collect a single data point (
+aka an <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a>), then it makes sense to run
+the recommendation engine on every Event.  At the end of the plan we will
+have 1 run who’s path through phase space was driven by the data.</p>
+<p>Examples of this are a 1D scan that samples more finely around the center
+of a peak or a 2D scan across gradient sample that samples more finely
+at phase boundaries.  In these cases there is a 1:1 mapping between an
+event collected and a recommendation for the next point to collect.</p>
+</div>
+<div class="section" id="per-run">
+<h4>Per-Run<a class="headerlink" href="#per-run" title="Permalink to this headline">¶</a></h4>
+<p>In cases where the data we need to make a decision about what to do next
+maps more closely to a Run, we do the same as the <a class="reference internal" href="#per-event"><span class="std std-ref">Per-Event</span></a> case, but
+only expect a recommendation once per-run.</p>
+<p>An example of this could be a 2D map where at each point we take a
+XANES scan and then focus on points of interest with in the map.</p>
+</div>
+<div class="section" id="passive-feedback">
+<h4>Passive feedback<a class="headerlink" href="#passive-feedback" title="Permalink to this headline">¶</a></h4>
+<p>In some cases we may not want to have a tightly coupled loop between
+data collection and the computation.  A version of passive feedback is
+already in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> as <a class="reference external" href="https://blueskyproject.io/bluesky/state-machine.html#automated-suspension">Suspenders</a>.</p>
+<p>For a data-driven example, consider if we have a data quality check to
+abort collection if something goes catastrophically wrong or cut of
+collection early if we have enough statistics.  We do not want to slow
+down data collection to wait for the computation to finish before
+continuing with the rest of the plan (the worst case scenario is the
+status quo if the feed back did not exist).  In this case we would
+subscribe the agent to the document stream and use some other
+side-band to communicate happy/sad to the RunEngine.</p>
+<p>Another case where this passive feedback could be use is in tuning the
+step size of a temperature ramp.  If the plan looks at some shared
+state (ex, a PV) for the next step size we could have an external
+agent that is watching the document stream write the recommended step
+size to state.  This way if the computation falls behind and needs to
+drop data points to catch up or falls over entirely the failure mode
+is a fixed step size ramp (which is the status quo).</p>
+<p>These passive feedback systems are out of scope for this package.</p>
+</div>
+<div class="section" id="per-many-runs">
+<h4>Per-many-runs<a class="headerlink" href="#per-many-runs" title="Permalink to this headline">¶</a></h4>
+<p>At this scale we need to collect and process the results from many run
+before making any recommendations as to the next step.  While this can
+be thought of as a variation of the per-run level, this requires
+significant additional infrastructure (such as a reliable plan queuing
+system) and is out of scope for this project.</p>
+</div>
+</div>
+<div class="section" id="implementation-and-deployment-concerns">
+<h3>Implementation and deployment concerns<a class="headerlink" href="#implementation-and-deployment-concerns" title="Permalink to this headline">¶</a></h3>
+<p>Details that need to be worked out</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>make sure the plan and agent agree on the Document schema</p></li>
+<li><p>how the documents get to the Agent (and any pre-processing / data
+reduction that needs to be done</p></li>
+<li><p>how the data will be routed back to the plan</p></li>
+<li><p>the schema of the data going from the recommendation engine to the plan</p></li>
+<li><p>how to handle back-pressure</p></li>
+<li><p>how to handle the plan / agent getting “out of sync”</p></li>
+<li><p>how to handle the agent going quiet</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, NSLS-II
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
