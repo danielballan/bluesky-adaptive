@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky_adaptive.per_start &mdash; bluesky-adaptive 0.post17+ge65006f documentation</title>
+  <title>bluesky_adaptive.per_start &mdash; bluesky-adaptive 0.post18+gd3e9e62 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.post17+ge65006f
+                0.post18+gd3e9e62
               </div>
             
           
@@ -257,7 +257,7 @@
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;event_page&quot;</span><span class="p">:</span>
 
             <span class="n">independent</span><span class="p">,</span> <span class="n">measurement</span> <span class="o">=</span> <span class="n">extract_event_page</span><span class="p">(</span>
-                <span class="n">independent_keys</span><span class="p">,</span> <span class="n">dependent_keys</span><span class="p">,</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+                <span class="n">independent_keys</span><span class="p">,</span> <span class="n">dependent_keys</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="n">adaptive_obj</span><span class="o">.</span><span class="n">tell_many</span><span class="p">(</span><span class="n">independent</span><span class="p">,</span> <span class="n">measurement</span><span class="p">)</span>
             <span class="c1"># pull the next point out of the adaptive API</span>
