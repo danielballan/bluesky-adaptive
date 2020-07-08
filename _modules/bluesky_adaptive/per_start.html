@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky_adaptive.per_start &mdash; bluesky-adaptive 0.post20+g55ec568 documentation</title>
+  <title>bluesky_adaptive.per_start &mdash; bluesky-adaptive 0.post21+g1daafd6 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.post20+g55ec568
+                0.post21+g1daafd6
               </div>
             
           
@@ -181,7 +181,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">Empty</span>
 
 <span class="kn">import</span> <span class="nn">bluesky.preprocessors</span> <span class="k">as</span> <span class="nn">bpp</span>
 <span class="kn">import</span> <span class="nn">bluesky.plan_stubs</span> <span class="k">as</span> <span class="nn">bps</span>
@@ -245,15 +245,22 @@
     <span class="k">if</span> <span class="n">queue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
 
+    <span class="n">poisoned</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">poisoned</span>
         <span class="c1"># TODO handle multi-stream runs with more than 1 event!</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;batch_count&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_count</span><span class="p">:</span>
                 <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                <span class="n">poisoned</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">return</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">poisoned</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;event_page&quot;</span><span class="p">:</span>
-
+            <span class="k">if</span> <span class="n">poisoned</span><span class="p">:</span>
+                <span class="k">return</span>
             <span class="n">independent</span><span class="p">,</span> <span class="n">measurement</span> <span class="o">=</span> <span class="n">extract_event_page</span><span class="p">(</span>
                 <span class="n">independent_keys</span><span class="p">,</span> <span class="n">dependent_keys</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
             <span class="p">)</span>
@@ -330,6 +337,13 @@
 
     <span class="nd">@bpp</span><span class="o">.</span><span class="n">subs_decorator</span><span class="p">(</span><span class="n">to_brains</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">gp_inner_plan</span><span class="p">():</span>
+        <span class="c1"># drain the queue in case there is anything left over from a previous</span>
+        <span class="c1"># run</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">from_brains</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">Empty</span><span class="p">:</span>
+                <span class="k">break</span>
         <span class="n">uids</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">next_point</span> <span class="o">=</span> <span class="n">first_point</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>

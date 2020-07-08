@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post20+g55ec568 documentation</title>
+  <title>bluesky-adaptive Documentation &mdash; bluesky-adaptive 0.post21+g1daafd6 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.post20+g55ec568
+                0.post21+g1daafd6
               </div>
             
           
@@ -185,7 +185,7 @@ any time.</p>
 </div>
 <div class="section" id="adaptive-ness-in-plans">
 <h2>Adaptive-ness in plans<a class="headerlink" href="#adaptive-ness-in-plans" title="Permalink to this headline">¶</a></h2>
-<p>Fixed plans (ex <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.count.html#bluesky.plans.count" title="(in bluesky v1.6.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a> or <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a>) are
+<p>Fixed plans (ex <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.count.html#bluesky.plans.count" title="(in bluesky v1.6.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a> or <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a>) are
 sufficient for many science use-cases, but in some cases having the
 plan respond (adapt) to the data as it is being taken can provide
 significant improvements to the quality of the data collected while
@@ -203,9 +203,9 @@ and stopping acquisition</p></li>
 <p>Adaptive-ness can be inserted into the data collection process at several levels</p>
 <ol class="arabic simple">
 <li><p>below <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> and in (or below) the control system</p></li>
-<li><p>in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> plans, but without generating <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></li>
-<li><p>providing feedback on a per-<a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a> basis</p></li>
-<li><p>providing feedback on a per-run / <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.start" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a> basis</p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">bluesky</span></code> plans, but without generating <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2.post5+g842bdb8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a></p></li>
+<li><p>providing feedback on a per-<a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2.post5+g842bdb8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a> basis</p></li>
+<li><p>providing feedback on a per-run / <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.start" title="(in Bluesky Event Model v1.15.2.post5+g842bdb8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a> basis</p></li>
 <li><p>asynchronous and decoupled feedback</p></li>
 <li><p>providing feedback across many runs</p></li>
 </ol>
@@ -248,10 +248,10 @@ level of adaptiveness is out-of-scope for this package.</p>
 the data extracted from the control system before it is processed
 through the <a class="reference external" href="https://blueskyproject.io/event_model">event_model</a>
 documents.  This is the level that we use in the
-<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.adaptive_scan.html#bluesky.plans.adaptive_scan" title="(in bluesky v1.6.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adaptive_scan</span></code></a> which is bundled with <code class="docutils literal notranslate"><span class="pre">bluesky</span></code>.
+<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.adaptive_scan.html#bluesky.plans.adaptive_scan" title="(in bluesky v1.6.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adaptive_scan</span></code></a> which is bundled with <code class="docutils literal notranslate"><span class="pre">bluesky</span></code>.
 This level has also been used at LCLS who implement the frame dropping
 logic described above at the plan level (via
-<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plan_stubs.drop.html#bluesky.plan_stubs.drop" title="(in bluesky v1.6.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop</span></code></a>).</p>
+<a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plan_stubs.drop.html#bluesky.plan_stubs.drop" title="(in bluesky v1.6.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop</span></code></a>).</p>
 <p>This level gives the author a tremendous amount of flexibility and can
 be used to prevent “bad” data from entering the document stream, but quickly
 becomes very plan-specific and difficult to generalize and re-use.  This level
@@ -261,7 +261,7 @@ is documented else where and out of scope for this project.</p>
 <span id="id1"></span><h4>Per-Event<a class="headerlink" href="#per-event" title="Permalink to this headline">¶</a></h4>
 <p>In cases where the computation we need to do to recommend the next step
 is fast compared to the time it takes to collect a single data point (
-aka an <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a>), then it makes sense to run
+aka an <a class="reference external" href="https://blueskyproject.io/event-model/api.html#event_model.DocumentNames.event" title="(in Bluesky Event Model v1.15.2.post5+g842bdb8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">event</span></code></a>), then it makes sense to run
 the recommendation engine on every Event.  At the end of the plan we will
 have 1 run who’s path through phase space was driven by the data.</p>
 <p>Examples of this are a 1D scan that samples more finely around the center
@@ -332,7 +332,7 @@ from it.</p>
 <p>A slightly more coupled example of asynchronous feedback is a 1D scan
 that looks at a PV (or other shared state) for what its step size is.
 If the step size is set by a user to a fixed value an the plan run it behaves
-as a normal <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a> with a fixed step size.  However,
+as a normal <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plans.scan.html#bluesky.plans.scan" title="(in bluesky v1.6.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scan</span></code></a> with a fixed step size.  However,
 there could be an agent (or a human!) watching the data and adjusting
 the step size based on the how “interesting” the data currently looks.</p>
 <p>In both of these cases the feedback is adding value without imposing
