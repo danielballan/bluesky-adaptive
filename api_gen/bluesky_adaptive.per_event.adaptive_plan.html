@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bluesky_adaptive.per_event.adaptive_plan &mdash; bluesky-adaptive 0.post21+g1daafd6 documentation</title>
+  <title>bluesky_adaptive.per_event.adaptive_plan &mdash; bluesky-adaptive 0.post23+gc3ebe70 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.post21+g1daafd6
+                0.post23+gc3ebe70
               </div>
             
           
@@ -172,7 +172,7 @@
 <h1>bluesky_adaptive.per_event.adaptive_plan<a class="headerlink" href="#bluesky-adaptive-per-event-adaptive-plan" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="bluesky_adaptive.per_event.adaptive_plan">
-<code class="sig-prename descclassname">bluesky_adaptive.per_event.</code><code class="sig-name descname">adaptive_plan</code><span class="sig-paren">(</span><em class="sig-param">dets</em>, <em class="sig-param">first_point</em>, <em class="sig-param">*</em>, <em class="sig-param">to_brains</em>, <em class="sig-param">from_brains</em>, <em class="sig-param">md=None</em>, <em class="sig-param">take_reading=&lt;function trigger_and_read&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bluesky_adaptive/per_event.html#adaptive_plan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bluesky_adaptive.per_event.adaptive_plan" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">bluesky_adaptive.per_event.</code><code class="sig-name descname">adaptive_plan</code><span class="sig-paren">(</span><em class="sig-param">dets</em>, <em class="sig-param">first_point</em>, <em class="sig-param">*</em>, <em class="sig-param">to_recommender</em>, <em class="sig-param">from_recommender</em>, <em class="sig-param">md=None</em>, <em class="sig-param">take_reading=&lt;function trigger_and_read&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bluesky_adaptive/per_event.html#adaptive_plan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bluesky_adaptive.per_event.adaptive_plan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an adaptive scan using an per event-run recommendation engine.</p>
 <p>The communication pattern here is that there is 1 recommendation for
 each Event that is generate</p>
@@ -188,13 +188,13 @@ are extracted from the keys.  The independent keys that the
 recommendation engine is looking for / returning must be provided
 by these devices.</p>
 </dd>
-<dt><strong>to_brains</strong><span class="classifier">Callable[str, dict]</span></dt><dd><p>This is the callback that will be registered to the RunEngine.</p>
+<dt><strong>to_recommender</strong><span class="classifier">Callable[document_name: str, document: dict]</span></dt><dd><p>This is the callback that will be registered to the RunEngine.</p>
 <p>The expected contract is for each event it will place either a
 dict mapping independent variable to recommended value or None.</p>
 <p>This plan will either move to the new position and take data
 if the value is a dict or end the run if <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
 </dd>
-<dt><strong>from_brains</strong><span class="classifier">Queue</span></dt><dd><p>The consumer side of the Queue that the recommendation engine is
+<dt><strong>from_recommender</strong><span class="classifier">Queue</span></dt><dd><p>The consumer side of the Queue that the recommendation engine is
 putting the recommendations onto.</p>
 </dd>
 <dt><strong>md</strong><span class="classifier">dict[str, Any], optional</span></dt><dd><p>Any extra meta-data to put in the Start document</p>
@@ -205,7 +205,7 @@ putting the recommendations onto.</p>
 </pre></div>
 </div>
 <p>Callable[List[OphydObj], Optional[str]] -&gt; Generator[Msg], optional</p>
-<p>Defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky.plan_stubs.trigger_and_read</span></code></p>
+<p>Defaults to <a class="reference external" href="https://blueskyproject.io/bluesky/generated/bluesky.plan_stubs.trigger_and_read.html#bluesky.plan_stubs.trigger_and_read" title="(in bluesky v1.6.6.post24+ga4a6f69)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bluesky.plan_stubs.trigger_and_read</span></code></a></p>
 </dd>
 </dl>
 </dd>

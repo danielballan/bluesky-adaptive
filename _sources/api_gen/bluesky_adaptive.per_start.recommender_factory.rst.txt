@@ -1,4 +1,4 @@
-bluesky\_adaptive.per\_start.recommender\_factory
+﻿bluesky\_adaptive.per\_start.recommender\_factory
 =================================================
 
 .. currentmodule:: bluesky_adaptive.per_start
